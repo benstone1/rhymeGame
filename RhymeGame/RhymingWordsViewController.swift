@@ -35,7 +35,13 @@ class RhymingWordsViewController: UIViewController {
     }
 
     private func loadNextRhymePair() {
-        rhymePair = RhymeWordPair.testWordPair
+        WordnikAPIClient.manager.getNextRhymePair { [weak self] (pair, error) in
+            DispatchQueue.main.async {
+                self?.rhymePair = pair
+                print(pair)
+                print(error)
+            }
+        }
     }
 }
 
