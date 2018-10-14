@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CDA3B8362172AB0B003D7D83 /* RhymeWordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B8352172AB0B003D7D83 /* RhymeWordPair.swift */; };
+		CDA3B8382172AB1B003D7D83 /* RhymeWordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B8372172AB1B003D7D83 /* RhymeWordInfo.swift */; };
+		CDA3B83A2172BC72003D7D83 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B8392172BC72003D7D83 /* NetworkHelper.swift */; };
+		CDA3B83C2172C9A1003D7D83 /* WordnikAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B83B2172C9A1003D7D83 /* WordnikAPIClient.swift */; };
+		CDA3B83E2172CB6A003D7D83 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B83D2172CB6A003D7D83 /* Secrets.swift */; };
 		CDC0E12821729E440047AC09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0E12721729E440047AC09 /* AppDelegate.swift */; };
-		CDC0E12A21729E440047AC09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0E12921729E440047AC09 /* ViewController.swift */; };
+		CDC0E12A21729E440047AC09 /* RhymingWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0E12921729E440047AC09 /* RhymingWordsViewController.swift */; };
 		CDC0E12D21729E440047AC09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDC0E12B21729E440047AC09 /* Main.storyboard */; };
 		CDC0E12F21729E480047AC09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDC0E12E21729E480047AC09 /* Assets.xcassets */; };
 		CDC0E13221729E480047AC09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDC0E13021729E480047AC09 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CDA3B8352172AB0B003D7D83 /* RhymeWordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeWordPair.swift; sourceTree = "<group>"; };
+		CDA3B8372172AB1B003D7D83 /* RhymeWordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeWordInfo.swift; sourceTree = "<group>"; };
+		CDA3B8392172BC72003D7D83 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		CDA3B83B2172C9A1003D7D83 /* WordnikAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikAPIClient.swift; sourceTree = "<group>"; };
+		CDA3B83D2172CB6A003D7D83 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		CDC0E12421729E440047AC09 /* RhymeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhymeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDC0E12721729E440047AC09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDC0E12921729E440047AC09 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CDC0E12921729E440047AC09 /* RhymingWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymingWordsViewController.swift; sourceTree = "<group>"; };
 		CDC0E12C21729E440047AC09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDC0E12E21729E480047AC09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDC0E13121729E480047AC09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,8 +65,13 @@
 			isa = PBXGroup;
 			children = (
 				CDC0E12721729E440047AC09 /* AppDelegate.swift */,
-				CDC0E12921729E440047AC09 /* ViewController.swift */,
+				CDC0E12921729E440047AC09 /* RhymingWordsViewController.swift */,
 				CDC0E12B21729E440047AC09 /* Main.storyboard */,
+				CDA3B8352172AB0B003D7D83 /* RhymeWordPair.swift */,
+				CDA3B8372172AB1B003D7D83 /* RhymeWordInfo.swift */,
+				CDA3B8392172BC72003D7D83 /* NetworkHelper.swift */,
+				CDA3B83B2172C9A1003D7D83 /* WordnikAPIClient.swift */,
+				CDA3B83D2172CB6A003D7D83 /* Secrets.swift */,
 				CDC0E12E21729E480047AC09 /* Assets.xcassets */,
 				CDC0E13021729E480047AC09 /* LaunchScreen.storyboard */,
 				CDC0E13321729E480047AC09 /* Info.plist */,
@@ -135,8 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDC0E12A21729E440047AC09 /* ViewController.swift in Sources */,
+				CDC0E12A21729E440047AC09 /* RhymingWordsViewController.swift in Sources */,
+				CDA3B8362172AB0B003D7D83 /* RhymeWordPair.swift in Sources */,
+				CDA3B83E2172CB6A003D7D83 /* Secrets.swift in Sources */,
+				CDA3B83A2172BC72003D7D83 /* NetworkHelper.swift in Sources */,
 				CDC0E12821729E440047AC09 /* AppDelegate.swift in Sources */,
+				CDA3B83C2172C9A1003D7D83 /* WordnikAPIClient.swift in Sources */,
+				CDA3B8382172AB1B003D7D83 /* RhymeWordInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6XD46ND9K;
 				INFOPLIST_FILE = RhymeGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +322,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6XD46ND9K;
 				INFOPLIST_FILE = RhymeGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
