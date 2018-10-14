@@ -3,17 +3,21 @@ import Foundation
 enum JSONError: Error {
     case noData
     case parseError
+    case noPhraseInfo
 }
 
 enum Endpoint {
     case relatedWords(to: String)
     case randomWord
+    case phrases(including: String)
     func toString() -> String {
         switch self {
         case .relatedWords(let word):
             return "\(word)/relatedWords"
         case .randomWord:
             return "randomWord"
+        case .phrases(let word):
+            return "\(word)/phrases"
         }
     }
 }
@@ -21,6 +25,21 @@ enum Endpoint {
 enum Resource: String {
     case word = "word.json/"
     case words = "words.json/"
+}
+
+struct Params {
+    static let randomWordParams = ["hasDictionaryDef=true",
+                                   "maxCorpusCount=-1",
+                                   "minDictionaryCount=100",
+                                   "maxDictionaryCount=-1",
+                                   "minLength=5",
+                                   "maxLength=-1"]
+
+    static let rhymeParams = ["useCanonical=false",
+                              "relationshipTypes=rhyme",
+                              "limitPerRelationshipType=10"]
+
+    static let phraseParams = ["limit=1","wlmi=10","useCanonical=false"]
 }
 
 class WordnikAPIClient {
@@ -32,16 +51,6 @@ class WordnikAPIClient {
     private let relatedWordsEndpoint = "relatedWords"
     private let apiKey = Secrets.wordkinsAPIKey
 
-    private let randomWordParams = ["hasDictionaryDef=true",
-                                    "maxCorpusCount=-1",
-                                    "minDictionaryCount=100",
-                                    "maxDictionaryCount=-1",
-                                    "minLength=5&maxLength=-1"]
-
-    private let rhymeParams = ["useCanonical=false",
-                               "relationshipTypes=rhyme",
-                               "limitPerRelationshipType=10"]
-
     func getNextRhymePair(completionHandler: @escaping (RhymeWordPair?, Error?) -> Void) {
         getRandomWord { [weak self] (str, error) in
             if let error = error { completionHandler(nil, error); return }
@@ -50,19 +59,24 @@ class WordnikAPIClient {
             self?.getWordRhyming(with: firstWord, completionHandler: { (str, error) in
                 if let error = error { completionHandler(nil, error); return }
                 guard let secondWord = str else { completionHandler(nil, JSONError.noData); return }
-                let pair = RhymeWordPair(firstRhymeInfo: RhymeWordInfo(rhyme: firstWord, phrase: "n/a"),
-                                         secondRhymeInfo: RhymeWordInfo(rhyme: secondWord, phrase: "n/a"))
-                completionHandler(pair, nil)
+                self?.getPhrase(for: firstWord, completionHandler: { (firstInfo, error) in
+                    guard let firstInfo = firstInfo else { return }
+                    self?.getPhrase(for: secondWord, completionHandler: { (secondInfo, error) in
+                        guard let secondInfo = secondInfo else { return }
+                        let pair = RhymeWordPair(firstRhymeInfo: firstInfo, secondRhymeInfo: secondInfo)
+                        completionHandler(pair, nil)
+                    })
+                })
             })
         }
     }
 
     private func getRandomWord(completionHandler: @escaping (String?, Error?) -> Void) {
-        let randomWordEndpoint = createEndpoint(baseUrl: baseUrl,
-                                                resource: .words,
-                                                endpoint: Endpoint.randomWord,
-                                                key: apiKey,
-                                                params: randomWordParams)
+        let randomWordEndpoint = createUrl(baseUrl: baseUrl,
+                                           resource: .words,
+                                           endpoint: Endpoint.randomWord,
+                                           key: apiKey,
+                                           params: Params.randomWordParams)
         NetworkHelper.manager.getData(from: randomWordEndpoint) { (data, error) in
             if let error = error { completionHandler(nil, error); return }
             guard let data = data else { completionHandler(nil, JSONError.noData); return }
@@ -70,8 +84,8 @@ class WordnikAPIClient {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 guard let jsonDict = json as? [String: Any],
                     let word = jsonDict["word"] as? String else {
-                    completionHandler(nil, JSONError.parseError)
-                    return
+                        completionHandler(nil, JSONError.parseError)
+                        return
                 }
                 completionHandler(word, nil)
             }
@@ -82,11 +96,11 @@ class WordnikAPIClient {
     }
 
     private func getWordRhyming(with word: String, completionHandler: @escaping (String?, Error?) -> Void) {
-        let rhymingWordEndpoint = createEndpoint(baseUrl: baseUrl,
-                                                 resource: .word,
-                                                 endpoint: Endpoint.relatedWords(to: word),
-                                                 key: apiKey,
-                                                 params: rhymeParams)
+        let rhymingWordEndpoint = createUrl(baseUrl: baseUrl,
+                                            resource: .word,
+                                            endpoint: Endpoint.relatedWords(to: word),
+                                            key: apiKey,
+                                            params: Params.rhymeParams)
 
         NetworkHelper.manager.getData(from: rhymingWordEndpoint) { (data, error) in
             if let error = error { completionHandler(nil, error); return }
@@ -109,7 +123,37 @@ class WordnikAPIClient {
         }
     }
 
-    private func createEndpoint(baseUrl: String, resource: Resource, endpoint: Endpoint, key: String, params: [String] = []) -> URL {
+    private func getPhrase(for word: String, completionHandler: @escaping (RhymeWordInfo?,Error?) -> Void) {
+        let phraseUrl = createUrl(baseUrl: baseUrl,
+                                  resource: .word,
+                                  endpoint: .phrases(including: word),
+                                  key: Secrets.wordkinsAPIKey)
+        NetworkHelper.manager.getData(from: phraseUrl) { (data, error) in
+            if let error = error { completionHandler(nil, error); return }
+            guard let data = data else { completionHandler(nil, JSONError.noData); return }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                guard let jsonDictArr = json as? [[String: Any]],
+                    let jsonDict = jsonDictArr.first,
+                    let gramOne = jsonDict["gram1"] as? String,
+                    let gramTwo = jsonDict["gram2"] as? String else {
+                        completionHandler(nil, JSONError.noPhraseInfo)
+                        return
+                }
+                completionHandler(RhymeWordInfo(rhyme: word, phrase: "\(gramOne) \(gramTwo)"), nil)
+            }
+            catch {
+                completionHandler(nil, JSONError.parseError)
+            }
+        }
+    }
+
+    private func createUrl(baseUrl: String,
+                           resource: Resource,
+                           endpoint: Endpoint,
+                           key: String,
+                           params: [String] = []) -> URL {
+
         let params = (params + ["api_key=\(key)"]).joined(separator: "&")
         let strEndpoint = "\(baseUrl)\(resource.rawValue)\(endpoint.toString())?\(params)"
         return URL(string: strEndpoint)!
