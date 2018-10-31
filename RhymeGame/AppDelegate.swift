@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  RhymeGame
-//
-//  Created by Benjamin Stone on 10/13/18.
-//  Copyright © 2018 Benjamin Stone. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

@@ -17,6 +17,7 @@
 		CDC0E12D21729E440047AC09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDC0E12B21729E440047AC09 /* Main.storyboard */; };
 		CDC0E12F21729E480047AC09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDC0E12E21729E480047AC09 /* Assets.xcassets */; };
 		CDC0E13221729E480047AC09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDC0E13021729E480047AC09 /* LaunchScreen.storyboard */; };
+		CDC8B36221800A08007B3AE5 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8B36121800A08007B3AE5 /* UserDefaultsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CDC0E12E21729E480047AC09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDC0E13121729E480047AC09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDC0E13321729E480047AC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDC8B36121800A08007B3AE5 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				CDC0E12B21729E440047AC09 /* Main.storyboard */,
 				CDA3B8352172AB0B003D7D83 /* RhymeWordPair.swift */,
 				CDA3B8372172AB1B003D7D83 /* RhymeWordInfo.swift */,
+				CDC8B36121800A08007B3AE5 /* UserDefaultsHelper.swift */,
 				CDA3B8392172BC72003D7D83 /* NetworkHelper.swift */,
 				CDA3B83B2172C9A1003D7D83 /* WordnikAPIClient.swift */,
 				CDA3B83D2172CB6A003D7D83 /* Secrets.swift */,
@@ -152,6 +155,7 @@
 			files = (
 				CDC0E12A21729E440047AC09 /* RhymingWordsViewController.swift in Sources */,
 				CDA3B8362172AB0B003D7D83 /* RhymeWordPair.swift in Sources */,
+				CDC8B36221800A08007B3AE5 /* UserDefaultsHelper.swift in Sources */,
 				CDA3B83E2172CB6A003D7D83 /* Secrets.swift in Sources */,
 				CDA3B83A2172BC72003D7D83 /* NetworkHelper.swift in Sources */,
 				CDC0E12821729E440047AC09 /* AppDelegate.swift in Sources */,
