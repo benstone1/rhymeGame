@@ -114,10 +114,12 @@
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="lUc-fO-tvq" id="OmT-m7-dwT"/>
+                        <outlet property="leftStackView" destination="onG-5i-8pp" id="eXz-58-Erd"/>
                         <outlet property="phraseWordOneLabel" destination="9Q1-Zy-UF4" id="dGY-6w-Drx"/>
                         <outlet property="phraseWordTwoLabel" destination="W1Z-3E-hlf" id="ciH-lw-cgP"/>
                         <outlet property="rhymeOneTextField" destination="Mri-xI-agI" id="ETE-7Q-x9l"/>
                         <outlet property="rhymeTwoTextField" destination="cHx-6j-xUH" id="rbY-ec-QcS"/>
+                        <outlet property="rightStackView" destination="eJ1-RZ-nQP" id="0vU-oU-tT6"/>
                         <outlet property="scoreLabel" destination="dyH-lk-WdS" id="87W-t7-BtQ"/>
                     </connections>
                 </viewController>

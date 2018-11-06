@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78DF19E72DC2C67477D5C706 /* Pods_RhymeGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898F80A178CF98F69802C4A5 /* Pods_RhymeGame.framework */; };
 		CDA3B8362172AB0B003D7D83 /* RhymeWordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B8352172AB0B003D7D83 /* RhymeWordPair.swift */; };
 		CDA3B8382172AB1B003D7D83 /* RhymeWordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B8372172AB1B003D7D83 /* RhymeWordInfo.swift */; };
 		CDA3B83A2172BC72003D7D83 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA3B8392172BC72003D7D83 /* NetworkHelper.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		898F80A178CF98F69802C4A5 /* Pods_RhymeGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RhymeGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA3B8352172AB0B003D7D83 /* RhymeWordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeWordPair.swift; sourceTree = "<group>"; };
 		CDA3B8372172AB1B003D7D83 /* RhymeWordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeWordInfo.swift; sourceTree = "<group>"; };
 		CDA3B8392172BC72003D7D83 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -34,6 +36,8 @@
 		CDC0E13121729E480047AC09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDC0E13321729E480047AC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDC8B36121800A08007B3AE5 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		F0A41C55E5C64266C31D31B1 /* Pods-RhymeGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhymeGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RhymeGame/Pods-RhymeGame.debug.xcconfig"; sourceTree = "<group>"; };
+		F43250A881DEC23AFCDD36A5 /* Pods-RhymeGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhymeGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-RhymeGame/Pods-RhymeGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78DF19E72DC2C67477D5C706 /* Pods_RhymeGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19AF17F7D6670868C86DB096 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				898F80A178CF98F69802C4A5 /* Pods_RhymeGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CDC0E11B21729E440047AC09 = {
 			isa = PBXGroup;
 			children = (
 				CDC0E12621729E440047AC09 /* RhymeGame */,
 				CDC0E12521729E440047AC09 /* Products */,
+				D6774E61C3A0BB4B49DB62A3 /* Pods */,
+				19AF17F7D6670868C86DB096 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +97,15 @@
 			path = RhymeGame;
 			sourceTree = "<group>";
 		};
+		D6774E61C3A0BB4B49DB62A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0A41C55E5C64266C31D31B1 /* Pods-RhymeGame.debug.xcconfig */,
+				F43250A881DEC23AFCDD36A5 /* Pods-RhymeGame.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDC0E13621729E480047AC09 /* Build configuration list for PBXNativeTarget "RhymeGame" */;
 			buildPhases = (
+				B0214313B5A7EA6269E303D1 /* [CP] Check Pods Manifest.lock */,
 				CDC0E12021729E440047AC09 /* Sources */,
 				CDC0E12121729E440047AC09 /* Frameworks */,
 				CDC0E12221729E440047AC09 /* Resources */,
+				322C871C4643DA0853D082AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +173,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		322C871C4643DA0853D082AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RhymeGame/Pods-RhymeGame-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RhymeGame/Pods-RhymeGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0214313B5A7EA6269E303D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RhymeGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDC0E12021729E440047AC09 /* Sources */ = {
@@ -302,6 +367,7 @@
 		};
 		CDC0E13721729E480047AC09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0A41C55E5C64266C31D31B1 /* Pods-RhymeGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -321,6 +387,7 @@
 		};
 		CDC0E13821729E480047AC09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F43250A881DEC23AFCDD36A5 /* Pods-RhymeGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
